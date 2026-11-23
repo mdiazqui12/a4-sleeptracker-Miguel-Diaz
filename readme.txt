@@ -17,7 +17,19 @@
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
 
-
+Ionic Angular overview: https://ionicframework.com/docs/angular/overview
+All Ionic components: https://ionicframework.com/docs/components
+Segment: https://ionicframework.com/docs/api/segment
+Datetime and datetime button: https://ionicframework.com/docs/api/datetime and https://ionicframework.com/docs/api/datetime-button
+Modal: https://ionicframework.com/docs/api/modal
+Range (the slider): https://ionicframework.com/docs/api/range
+List and item: https://ionicframework.com/docs/api/list and https://ionicframework.com/docs/api/item
+Toast: https://ionicframework.com/docs/api/toast
+Stanford Sleepiness Scale: https://web.stanford.edu/~dement/sss.html
+toLocaleTimeString on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString
+Setup links, for completeness: Ionic CLI https://ionicframework.com/docs/cli, Node https://nodejs.org, and Chrome device mode https://developer.chrome.com/docs/devtools/device-mode
+Angular control flow (@if and @for): https://angular.dev/guide/templates/control-flow
+Angular forms and ngModel: https://angular.dev/guide/forms
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 

@@ -24,4 +24,10 @@ export class OvernightSleepData extends SleepData {
 	override dateString():string {
 		return "Night of " + this.sleepStart.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
 	}
+
+	//bed and wake times, such as 00.00 Am to 00.00PM
+	override timeString(): string {
+		const format = { hour: 'numeric', minute: '2-digit' } as const;
+		return this.sleepStart.toLocaleTimeString('en-US', format) + ' to ' + this.sleepEnd.toLocaleTimeString('en-US', format);
+	}
 }
