@@ -31,6 +31,12 @@ Setup links, for completeness: Ionic CLI https://ionicframework.com/docs/cli, No
 Angular control flow (@if and @for): https://angular.dev/guide/templates/control-flow
 Angular forms and ngModel: https://angular.dev/guide/forms
 
+Capacitor Preferences: https://capacitorjs.com/docs/apis/preferences
+Browser local storage (what Preferences uses on the web): https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+JSON.stringify and JSON.parse: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
+Async functions: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Asynchronous
+
+
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 
 

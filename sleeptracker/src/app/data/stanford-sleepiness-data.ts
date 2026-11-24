@@ -24,4 +24,10 @@ export class StanfordSleepinessData extends SleepData {
 	override summaryString():string {
 		return this.loggedValue + ": " + StanfordSleepinessData.ScaleValues[this.loggedValue];
 	}
+
+	static fromStored(stored:any): StanfordSleepinessData{
+		const data = new StanfordSleepinessData(stored.loggedValue, new Date(stored.loggedAt));
+		data.id = stored.id;
+		return data;
+	}
 }

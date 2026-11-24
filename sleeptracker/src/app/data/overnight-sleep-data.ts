@@ -30,4 +30,12 @@ export class OvernightSleepData extends SleepData {
 		const format = { hour: 'numeric', minute: '2-digit' } as const;
 		return this.sleepStart.toLocaleTimeString('en-US', format) + ' to ' + this.sleepEnd.toLocaleTimeString('en-US', format);
 	}
+
+	//building log from plain object. (dates are saved as text and then braught back to dates)
+	static fromStored(stored:any):OvernightSleepData {
+		const data = new OvernightSleepData(new Date(stored.sleepStart), new Date(stored.sleepEnd));
+		data.id = stored.id;
+		data.loggedAt = new Date(stored.loggedAt);
+		return data;
+	}
 }
