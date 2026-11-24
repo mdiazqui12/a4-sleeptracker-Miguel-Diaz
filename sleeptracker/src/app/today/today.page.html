@@ -48,4 +48,36 @@
   <ion-button expand="block" (click)="goToLog('overnight')">Log last night's sleep</ion-button>
   <ion-button expand="block" fill="outline" (click)="goToLog('sleepiness')">How sleepy am I right now?</ion-button>
 
+  <!--the daily reminder to log sleepiness (the native device feature)-->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Sleepiness reminder</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item lines="none">
+        <ion-toggle [checked]="notificationService.enabled" (ionChange)="toggleReminder($event)">
+          Remind me every day
+        </ion-toggle>
+      </ion-item>
+
+      @if (notificationService.enabled) {
+        <ion-item lines="none">
+          <ion-label>Remind me at</ion-label>
+          <ion-datetime-button datetime="reminder-time"></ion-datetime-button>
+        </ion-item>
+
+        <ion-modal [keepContents]="true">
+          <ng-template>
+            <ion-datetime id="reminder-time" presentation="time" [value]="notificationService.time"
+                          (ionChange)="changeReminderTime($event)"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      }
+
+      <!--lets the person (and the demo video) see a reminder right away-->
+      <ion-button fill="outline" size="small" class="ion-margin-top" (click)="sendTest()">
+        Send a test reminder in 5 seconds
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
