@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="app-toolbar">
+    <ion-title>Log</ion-title>
+  </ion-toolbar>
+  <!--the segment switches between the two forms-->
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="view">
+      <ion-segment-button value="overnight">
+        <ion-label>Sleep</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="sleepiness">
+        <ion-label>Sleepiness</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!--LOG OVERNIGHT SLEEP-->
+  @if (view === 'overnight') {
+    <h2>Log last night</h2>
+    <ion-list>
+      <ion-item>
+        <ion-label>Went to bed</ion-label>
+        <ion-datetime-button datetime="bed-picker"></ion-datetime-button>
+      </ion-item>
+      <ion-item>
+        <ion-label>Woke up</ion-label>
+        <ion-datetime-button datetime="wake-picker"></ion-datetime-button>
+      </ion-item>
+    </ion-list>
+
+    <!--the pickers open in a pop up when the buttons above are tapped-->
+    <ion-modal [keepContents]="true">
+      <ng-template>
+        <ion-datetime id="bed-picker" [(ngModel)]="bedTime" [max]="maxDate"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+    <ion-modal [keepContents]="true">
+      <ng-template>
+        <ion-datetime id="wake-picker" [(ngModel)]="wakeTime" [max]="maxDate"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+    <!--explain why the button is turned off, so the person can fix it-->
+    @if (!canSaveOvernight) {
+      <ion-note color="danger">The wake up time must be after the bed time, and within 24 hours of it.</ion-note>
+    }
+
+    <ion-button expand="block" class="ion-margin-top" [disabled]="!canSaveOvernight" (click)="saveOvernight()">
+      Save sleep
+    </ion-button>
+  }
+
+  <!--LOG SLEEPINESS-->
+  @if (view === 'sleepiness') {
+    <h2>How sleepy do you feel?</h2>
+    <ion-list>
+      <ion-item>
+        <ion-range [(ngModel)]="sleepinessValue" [min]="1" [max]="7" [step]="1"
+                   [snaps]="true" [ticks]="true" [pin]="true" label="Sleepiness (1 to 7)" label-placement="stacked">
+        </ion-range>
+      </ion-item>
+      <!--the description of the chosen number from the Stanford Sleepiness Scale-->
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h3>{{ sleepinessValue }}</h3>
+          <p>{{ scaleValues[sleepinessValue] }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>When</ion-label>
+        <ion-datetime-button datetime="sleepiness-picker"></ion-datetime-button>
+      </ion-item>
+    </ion-list>
+
+    <ion-modal [keepContents]="true">
+      <ng-template>
+        <ion-datetime id="sleepiness-picker" [(ngModel)]="sleepinessTime" [max]="maxDate"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+    <ion-button expand="block" class="ion-margin-top" (click)="saveSleepiness()">
+      Save sleepiness
+    </ion-button>
+  }
+
+</ion-content>

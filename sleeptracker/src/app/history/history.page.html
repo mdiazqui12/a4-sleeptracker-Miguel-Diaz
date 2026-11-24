@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="app-toolbar">
+    <ion-title>History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Overnight sleep</ion-label>
+    </ion-list-header>
+    @for (night of overnightLogs; track night.id) {
+      <ion-item>
+        <ion-label>
+          <h2>{{ night.dateString() }}</h2>
+          <p>{{ night.summaryString() }}</p>
+          <p>{{ night.timeString() }}</p>
+        </ion-label>
+      </ion-item>
+    } @empty {
+      <ion-item>
+        <ion-label>No sleep logged yet.</ion-label>
+      </ion-item>
+    }
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Sleepiness</ion-label>
+    </ion-list-header>
+    @for (entry of sleepinessLogs; track entry.id) {
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <h2>{{ entry.dateString() }}, {{ entry.timeString() }}</h2>
+          <p>{{ entry.summaryString() }}</p>
+        </ion-label>
+      </ion-item>
+    } @empty {
+      <ion-item>
+        <ion-label>No sleepiness logged yet.</ion-label>
+      </ion-item>
+    }
+  </ion-list>
+
+</ion-content>

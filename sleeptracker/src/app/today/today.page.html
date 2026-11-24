@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="app-toolbar">
+    <ion-title>Today</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!--last night's sleep-->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Last night</ion-card-subtitle>
+      @if (lastNight; as night) {
+        <ion-card-title>{{ night.summaryString() }}</ion-card-title>
+      } @else {
+        <ion-card-title>No sleep logged yet</ion-card-title>
+      }
+    </ion-card-header>
+    <ion-card-content>
+      @if (lastNight; as night) {
+        {{ night.dateString() }}, {{ night.timeString() }}
+      } @else {
+        Log your first night to see it here.
+      }
+    </ion-card-content>
+  </ion-card>
+
+  <!--the most recent sleepiness log-->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Latest sleepiness</ion-card-subtitle>
+      @if (lastSleepiness; as entry) {
+        <ion-card-title>{{ entry.summaryString() }}</ion-card-title>
+      } @else {
+        <ion-card-title>Nothing logged yet</ion-card-title>
+      }
+    </ion-card-header>
+    <ion-card-content>
+      @if (lastSleepiness; as entry) {
+        {{ entry.dateString() }}, {{ entry.timeString() }}
+      } @else {
+        Tap the button below to log how you feel.
+      }
+    </ion-card-content>
+  </ion-card>
+
+  <!--two big buttons for the two things a person does most-->
+  <ion-button expand="block" (click)="goToLog('overnight')">Log last night's sleep</ion-button>
+  <ion-button expand="block" fill="outline" (click)="goToLog('sleepiness')">How sleepy am I right now?</ion-button>
+
+</ion-content>
