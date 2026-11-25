@@ -32,12 +32,12 @@
     </ion-list>
 
     <!--the pickers open in a pop up when the buttons above are tapped-->
-    <ion-modal [keepContents]="true">
+    <ion-modal [keepContentsMounted]="true">
       <ng-template>
         <ion-datetime id="bed-picker" [(ngModel)]="bedTime" [max]="maxDate"></ion-datetime>
       </ng-template>
     </ion-modal>
-    <ion-modal [keepContents]="true">
+    <ion-modal [keepContentsMounted]="true">
       <ng-template>
         <ion-datetime id="wake-picker" [(ngModel)]="wakeTime" [max]="maxDate"></ion-datetime>
       </ng-template>
