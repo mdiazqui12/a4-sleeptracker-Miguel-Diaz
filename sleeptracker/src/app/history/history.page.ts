@@ -1,21 +1,26 @@
 import { Component } from '@angular/core';
 import {
-  IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonListHeader, IonItem, IonItemSliding, IonItemOptions, IonItemOption, AlertController, IonNote, IonLabel
+  IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonListHeader, IonItem, IonItemSliding, IonItemOptions, IonItemOption, AlertController, IonNote, IonLabel, IonIcon
 } from '@ionic/angular/standalone';
 import { SleepService } from '../services/sleep.service';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
+import { addIcons } from 'ionicons';
+import { moon } from 'ionicons/icons';
+
 
 @Component({
   selector: 'app-history',
   templateUrl: 'history.page.html',
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonListHeader, IonItem, IonLabel, IonItemSliding, IonItemOptions, IonItemOption, IonNote],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonListHeader, IonItem, IonLabel, IonItemSliding, IonItemOptions, IonItemOption, IonNote, IonIcon],
 })
 export class HistoryPage {
   constructor(
-    public sleepService:SleepService,
+    private sleepService:SleepService,
     private alertController:AlertController
-  ) {}
+  ) {
+    addIcons({ moon });
+  }
 
   //newest logs first
   get overnightLogs() {

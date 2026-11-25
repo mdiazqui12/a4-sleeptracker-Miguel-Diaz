@@ -36,7 +36,13 @@ Browser local storage (what Preferences uses on the web): https://developer.mozi
 JSON.stringify and JSON.parse: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
 Async functions: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Asynchronous
 
-
+Theme
+Ionic theming basics: https://ionicframework.com/docs/theming/basics
+Colors: https://ionicframework.com/docs/theming/colors
+Dark mode: https://ionicframework.com/docs/theming/dark-mode
+Color generator (to make your own palette): https://ionicframework.com/docs/theming/color-creator
+Apple Human Interface Guidelines: https://developer.apple.com/design/human-interface-guidelines/
+Material Design 3: https://m3.material.io/
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 
 

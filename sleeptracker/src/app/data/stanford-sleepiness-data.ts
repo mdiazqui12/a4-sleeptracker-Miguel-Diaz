@@ -30,4 +30,22 @@ export class StanfordSleepinessData extends SleepData {
 		data.id = stored.id;
 		return data;
 	}
+
+	//the chosen number (the field itself is private)
+	get value():number {
+		return this.loggedValue;
+	}
+
+	//going form green to red depending on how sleepy they are
+	badgeColor():string {
+		const hue = 120 - (this.loggedValue - 1) * 20;
+		return 'hsl(' + hue + ', 65%, 38%)';
+	}
+
+	//just the description from the scale, like "Somewhat foggy, let down"
+	descriptionString():string {
+		return StanfordSleepinessData.ScaleValues[this.loggedValue] ?? '';
+	}
+
+	
 }

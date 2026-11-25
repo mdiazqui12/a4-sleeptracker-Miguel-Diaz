@@ -38,4 +38,9 @@ export class OvernightSleepData extends SleepData {
 		data.loggedAt = new Date(stored.loggedAt);
 		return data;
 	}
+
+	//the hours slept as a number
+	hoursSlept():number {
+		return (this.sleepEnd.getTime() - this.sleepStart.getTime()) / (1000 * 60 * 60);
+	}
 }

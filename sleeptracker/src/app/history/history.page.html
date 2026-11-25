@@ -6,7 +6,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-note class="ion-padding" style="display: block;">Swipe an entry to the left to delete it.</ion-note>
+  <ion-note class="hint-note">Swipe an entry to the left to delete it.</ion-note>
   <ion-list>
     <ion-list-header>
       <ion-label>Overnight sleep</ion-label>
@@ -14,6 +14,7 @@
     @for (night of overnightLogs; track night.id) {
         <ion-item-sliding #sliding>
             <ion-item>
+                <ion-icon name="moon" slot="start" color="primary"></ion-icon>
                 <ion-label>
                     <h2>{{ night.dateString() }}</h2>
                     <p>{{ night.summaryString() }}</p>
@@ -26,7 +27,7 @@
         </ion-item-sliding>
     } @empty {
       <ion-item>
-        <ion-label>No sleep logged yet.</ion-label>
+        <ion-label class="ion-text-wrap">No sleep logged yet. Tap the Log tab to add your first night.</ion-label>
       </ion-item>
     }
   </ion-list>
@@ -38,9 +39,11 @@
     @for (entry of sleepinessLogs; track entry.id) {
         <ion-item-sliding #sliding>
             <ion-item>
+                <!--a colored number badge: green is wide awake, red is about to fall asleep-->
+                <span slot="start" class="score-badge" [style.background]="entry.badgeColor()">{{ entry.value }}</span>
                 <ion-label class="ion-text-wrap">
-                    <h2>{{ entry.dateString() }}, {{ entry.timeString() }}</h2>
-                    <p>{{ entry.summaryString() }}</p>
+                    <h2>{{ entry.descriptionString() }}</h2>
+                    <p>{{ entry.dateString() }}, {{ entry.timeString() }}</p>
                 </ion-label>
             </ion-item>
             <ion-item-options side="end">
@@ -49,7 +52,7 @@
         </ion-item-sliding>
     } @empty {
       <ion-item>
-        <ion-label>No sleepiness logged yet.</ion-label>
+        <ion-label class="ion-text-wrap">No sleepiness logged yet. Tap the Log tab to add how you feel.</ion-label>
       </ion-item>
     }
   </ion-list>
