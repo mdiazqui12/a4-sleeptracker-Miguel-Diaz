@@ -75,7 +75,7 @@
       </ion-item>
     </ion-list>
 
-    <ion-modal [keepContents]="true">
+    <ion-modal [keepContentsMounted] ="true">
       <ng-template>
         <ion-datetime id="sleepiness-picker" [(ngModel)]="sleepinessTime" [max]="maxDate"></ion-datetime>
       </ng-template>

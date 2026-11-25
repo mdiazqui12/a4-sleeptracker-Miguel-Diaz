@@ -14,8 +14,8 @@ export const routes: Routes = [
        loadComponent: () => import('./log/log.page').then((m) => m.LogPage),
     },
     {
-        path: 'history',
-        loadComponent: () => import('./history/history.page').then((m) => m.HistoryPage),
+      path: 'history',
+      loadComponent: () => import('./history/history.page').then((m) => m.HistoryPage),
     },
     {
         path: '',
@@ -26,7 +26,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home/today',
+    redirectTo: 'tabs/today',
     pathMatch: 'full',
   },
 ];
